@@ -1,13 +1,12 @@
 package taskbarIcon
 
 import (
+	
+		startMenu "pepcodingContest/startMenu"
 	"image/color"
 	"log"
-
 	"fyne.io/fyne/v2"
-
 	"fyne.io/fyne/v2/canvas"
-	// "fyne.io/fyne/v2/internal/app"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
@@ -24,11 +23,17 @@ type StateCheck struct {
 	State CheckState
 	normalState string
 	openedState string
+	clickedOnWhichApp string
+	clickedOnWhichApp_State string
 	// passFunc func()
 }
+var (
+PassArray []string
+WhichApp string
+)
 
 func NewStateCheck(array []string) *StateCheck {
-	c := &StateCheck{normalState:array[0],openedState: array[1] }
+	c := &StateCheck{normalState:array[0],openedState: array[1],clickedOnWhichApp: array[2],clickedOnWhichApp_State: "none"}
 	c.ExtendBaseWidget(c)
 	return c
 }
@@ -40,6 +45,13 @@ func (c *StateCheck) Tapped(_ *fyne.PointEvent) {
 		c.State++
 	}
 
+		if c.clickedOnWhichApp_State == "none"{
+			c.clickedOnWhichApp_State = "true"
+		}else if c.clickedOnWhichApp_State=="true"{
+		c.clickedOnWhichApp_State = "false"
+		}else if c.clickedOnWhichApp_State == "false"{
+			c.clickedOnWhichApp_State = "true"
+		}
 	c.Refresh()
 }
 
@@ -78,18 +90,25 @@ func (t *StateRender) Refresh() {
 }
 
 func (t *StateRender) updateImage() {
-	defer t.img.Refresh()
 
+	defer t.img.Refresh()
 	switch t.check.State {
-	case CheckOff:
-		
+		case CheckOff:
+		if t.check.clickedOnWhichApp == "start" && t.check.clickedOnWhichApp_State == "false"{
+			startMenu.RunUpDown()
+				startMenu.StartMenu_Icon_Run_MoveDown()
+		}
 		res,err := fyne.LoadResourceFromPath(t.check.normalState)
 		if err != nil {
 			log.Println("Failed to load indeterminate resource")
 			return
 		}
 		t.img.Resource =theme.NewThemedResource(res)
-	default:
+	case CheckOn:
+		if t.check.clickedOnWhichApp == "start" && t.check.clickedOnWhichApp_State == "true"{
+			startMenu.RunUpMove()
+				startMenu.StartMenu_Icon_Run_MoveUp()
+		}
 		res,err := fyne.LoadResourceFromPath(t.check.openedState)
 		if err != nil {
 			log.Println("Failed to load indeterminate resource")

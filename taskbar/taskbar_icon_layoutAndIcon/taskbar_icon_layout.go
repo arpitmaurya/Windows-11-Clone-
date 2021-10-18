@@ -44,16 +44,16 @@ func (tbi_l *taskbarIcon_layout) Layout(items []fyne.CanvasObject,size fyne.Size
 }
 
 func TaskbarIcon_layout_UI() fyne.CanvasObject{
-	 array1 := []string{"D:/pepcodingContest/img/logo2.png",
-		"D:/pepcodingContest/img/start_logo_started.png"}
+	 start := []string{"D:/pepcodingContest/img/logo2.png",
+		"D:/pepcodingContest/img/start_logo_started.png","start"}
 
-	 array2 := []string{"D:/pepcodingContest/img/settingLogo.png",
-		"D:/pepcodingContest/img/settingLogo_started.png"}
+	 setting := []string{"D:/pepcodingContest/img/settingLogo.png",
+		"D:/pepcodingContest/img/settingLogo_started.png","setting"}
 
-	 array3 := []string{"D:/pepcodingContest/img/newsLogo.png",
-		"D:/pepcodingContest/img/newsLogo_Started.png"}
+	 news := []string{"D:/pepcodingContest/img/newsLogo.png",
+		"D:/pepcodingContest/img/newsLogo_Started.png","news"}
 
 
-	newContainer := container.New(&taskbarIcon_layout{},NewStateCheck(array1),NewStateCheck(array2),NewStateCheck(array3))
+	newContainer := container.New(&taskbarIcon_layout{},NewStateCheck(start),NewStateCheck(setting),NewStateCheck(news))
 	return newContainer
 }
