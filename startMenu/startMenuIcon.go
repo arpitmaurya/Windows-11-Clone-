@@ -1,101 +1,101 @@
 package startMenuLayout
 
 import (
+	"image/color"
+	"log"
+
 	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/container"
+
+	"fyne.io/fyne/v2/canvas"
+	// "fyne.io/fyne/v2/internal/app"
+	"fyne.io/fyne/v2/theme"
+	"fyne.io/fyne/v2/widget"
 )
 
-type startMenuIconLayout struct{}
+type MenuCheckState int
 
-
-	var (
-	startMenu_Icon_global_width float32
-	startMenu_Icon_global_height float32
-	startMenu_Icon_itemData []fyne.CanvasObject
-	startMenu_Icon_global_count int
+const (
+	CheckOff MenuCheckState = iota
+	CheckOn
 )
 
+type MenuStateCheck struct {
+	widget.BaseWidget
+	State MenuCheckState
+	normalState string
+	openedState string
+	// passFunc func()
+}
 
-func (tbi_l *startMenuIconLayout) MinSize(items []fyne.CanvasObject) fyne.Size{
-	total := fyne.NewSize(0,0)
-	for _,obj := range items{
-		if !obj.Visible(){
-			continue
+func NewMenuStateCheck(array []string) *MenuStateCheck {
+	c := &MenuStateCheck{normalState:array[0],openedState: array[1] }
+	c.ExtendBaseWidget(c)
+	return c
+}
+
+func (c *MenuStateCheck) Tapped(_ *fyne.PointEvent) {
+	if c.State == CheckOn {
+		c.State = CheckOff
+	} else {
+		c.State++
+	}
+
+	c.Refresh()
+}
+
+func (c *MenuStateCheck) CreateRenderer() fyne.WidgetRenderer {
+	r := &MenuStateRender{check: c, img: &canvas.Image{}}
+	r.updateImage()
+	return r
+}
+
+type MenuStateRender struct {
+	check *MenuStateCheck
+	img   *canvas.Image
+}
+
+func (t *MenuStateRender) BackgroundColor() color.Color {
+	return color.Transparent
+}
+
+func (t *MenuStateRender) Destroy() {
+}
+
+func (t *MenuStateRender) Layout(_ fyne.Size) {
+	t.img.Resize(fyne.NewSize(60,60))
+}
+
+func (t *MenuStateRender) MinSize() fyne.Size {
+	return fyne.NewSize(theme.IconInlineSize(), theme.IconInlineSize())
+}
+
+func (t *MenuStateRender) Objects() []fyne.CanvasObject {
+	return []fyne.CanvasObject{t.img}
+}
+
+func (t *MenuStateRender) Refresh() {
+	t.updateImage()
+}
+
+func (t *MenuStateRender) updateImage() {
+	defer t.img.Refresh()
+
+	switch t.check.State {
+	case CheckOff:
+		
+		res,err := fyne.LoadResourceFromPath(t.check.normalState)
+		if err != nil {
+			log.Println("Failed to load indeterminate resource")
+			return
 		}
-		total = total.Add(obj.MinSize())
-	}
-	return total
-}
-
-func (tbi_l *startMenuIconLayout) Layout(items []fyne.CanvasObject,size fyne.Size){
-
-	count := -1
-	for _,obj := range items{
-		if !obj.Visible(){
-			continue
+		t.img.Resource =theme.NewThemedResource(res)
+	default:
+		res,err := fyne.LoadResourceFromPath(t.check.openedState)
+		if err != nil {
+			log.Println("Failed to load indeterminate resource")
+			return
 		}
-		count++
+		t.img.Resource = theme.NewThemedResource(res)
 	}
-	if count==1{
-		count=0
-	}
-	
-	startMenu_Icon_global_width = size.Width
-	startMenu_Icon_global_height = size.Height 
-	startMenu_Icon_itemData = items
-	startMenu_Icon_global_count = count
-	myPos := fyne.NewPos((size.Width/2.55)-float32(count*23),size.Height)
-	// myPos := fyne.NewPos((400)-float32(count*23),(400))
-			for _,obj := range items{
-				if !obj.Visible(){
-					continue
-				}
-				obj.Move(myPos)
-				myPos.X = myPos.X+70
-				
-				obj.Resize(fyne.NewSize(60,60))
-			}
 }
 
-func StartMenu_Icon_Run_MoveUp(){
-	myPos := fyne.NewPos((startMenu_Icon_global_width/2.55)-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height/5.5))
-					for _,obj := range startMenu_Icon_itemData{
-				if !obj.Visible(){
-					continue
-				}
-				obj.Move(myPos)
-				myPos.X = myPos.X+70
-				
-				obj.Resize(fyne.NewSize(60,60))
-			}
-}
-func StartMenu_Icon_Run_MoveDown(){
-	myPos := fyne.NewPos((startMenu_Icon_global_width/2.55)-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height))
-					for _,obj := range startMenu_Icon_itemData{
-				if !obj.Visible(){
-					continue
-				}
-				obj.Move(myPos)
-				myPos.X = myPos.X+70
-				
-				obj.Resize(fyne.NewSize(60,60))
-			}
-}
-
-func StartMenuIconLayout_UI() fyne.CanvasObject{
-	 calc := []string{"D:/pepcodingContest/img/calcLogo.png",
-		"D:/pepcodingContest/img/calcStarted.png","calc"}
-
-	 codeView := []string{"D:/pepcodingContest/img/codeView.png",
-		"D:/pepcodingContest/img/codeViewStarted.png","codeView"}
-
-	 snake := []string{"D:/pepcodingContest/img/snakeLogo.png",
-		"D:/pepcodingContest/img/snakeStarted.png","snake"}
-
-
-	newContainer := container.New(&startMenuIconLayout{},
-		NewMenuStateCheck(calc),
-		NewMenuStateCheck(codeView),
-		NewMenuStateCheck(snake))
-	return newContainer
-}
