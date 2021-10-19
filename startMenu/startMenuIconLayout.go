@@ -44,39 +44,39 @@ func (tbi_l *startMenuIconLayout) Layout(items []fyne.CanvasObject,size fyne.Siz
 	startMenu_Icon_global_height = size.Height 
 	startMenu_Icon_itemData = items
 	startMenu_Icon_global_count = count
-	myPos := fyne.NewPos((size.Width/2.55)-float32(count*23),size.Height)
+	myPos := fyne.NewPos((size.Width/2.25-5.5)-float32(count*23),size.Height)
 	// myPos := fyne.NewPos((400)-float32(count*23),(400))
 			for _,obj := range items{
 				if !obj.Visible(){
 					continue
 				}
 				obj.Move(myPos)
-				myPos.X = myPos.X+70
+				myPos.X = myPos.X+75
 				
 				obj.Resize(fyne.NewSize(60,60))
 			}
 }
 
 func StartMenu_Icon_Run_MoveUp(){
-	myPos := fyne.NewPos((startMenu_Icon_global_width/2.55)-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height/5.5))
+	myPos := fyne.NewPos((startMenu_Icon_global_width/2.25-5.5)-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height/5.5))
 					for _,obj := range startMenu_Icon_itemData{
 				if !obj.Visible(){
 					continue
 				}
 				obj.Move(myPos)
-				myPos.X = myPos.X+70
+				myPos.X = myPos.X+75
 				
 				obj.Resize(fyne.NewSize(60,60))
 			}
 }
 func StartMenu_Icon_Run_MoveDown(){
-	myPos := fyne.NewPos((startMenu_Icon_global_width/2.55)-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height))
+	myPos := fyne.NewPos((startMenu_Icon_global_width/2.25-5.5)+-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height))
 					for _,obj := range startMenu_Icon_itemData{
 				if !obj.Visible(){
 					continue
 				}
 				obj.Move(myPos)
-				myPos.X = myPos.X+70
+				myPos.X = myPos.X+75
 				
 				obj.Resize(fyne.NewSize(60,60))
 			}
@@ -84,18 +84,31 @@ func StartMenu_Icon_Run_MoveDown(){
 
 func StartMenuIconLayout_UI() fyne.CanvasObject{
 	 calc := []string{"D:/pepcodingContest/img/calcLogo.png",
-		"D:/pepcodingContest/img/calcStarted.png","calc"}
+		"D:/pepcodingContest/img/calcLogo.png","calc"}
 
 	 codeView := []string{"D:/pepcodingContest/img/codeView.png",
-		"D:/pepcodingContest/img/codeViewStarted.png","codeView"}
+		"D:/pepcodingContest/img/codeView.png","codeView"}
 
-	 snake := []string{"D:/pepcodingContest/img/snakeLogo.png",
-		"D:/pepcodingContest/img/snakeStarted.png","snake"}
+	 notepad := []string{"D:/pepcodingContest/img/notepad.png",
+		"D:/pepcodingContest/img/notepad.png","notepad"}
+
+	 weather := []string{"D:/pepcodingContest/img/weather.png",
+		"D:/pepcodingContest/img/weather.png","weather"}
+
+	 todo := []string{"D:/pepcodingContest/img/todo.png",
+		"D:/pepcodingContest/img/todo.png","todo"}
+
+	 wallpaper := []string{"D:/pepcodingContest/img/wallpaper.png",
+		"D:/pepcodingContest/img/wallpaper.png","wallpaper"}
 
 
 	newContainer := container.New(&startMenuIconLayout{},
 		NewMenuStateCheck(calc),
 		NewMenuStateCheck(codeView),
-		NewMenuStateCheck(snake))
+		NewMenuStateCheck(notepad),
+		NewMenuStateCheck(weather),
+		NewMenuStateCheck(todo),
+		NewMenuStateCheck(wallpaper),
+	)
 	return newContainer
 }

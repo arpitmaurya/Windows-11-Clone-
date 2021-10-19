@@ -3,6 +3,7 @@ package taskbarIcon
 import (
 	
 		startMenu "pepcodingContest/startMenu"
+		news "pepcodingContest/news"
 	"image/color"
 	"log"
 	"fyne.io/fyne/v2"
@@ -98,6 +99,11 @@ func (t *StateRender) updateImage() {
 			startMenu.RunUpDown()
 				startMenu.StartMenu_Icon_Run_MoveDown()
 		}
+
+		if t.check.clickedOnWhichApp == "news" && t.check.clickedOnWhichApp_State == "false"{
+		news.News_RunUpDown()
+		}
+		
 		res,err := fyne.LoadResourceFromPath(t.check.normalState)
 		if err != nil {
 			log.Println("Failed to load indeterminate resource")
@@ -108,6 +114,9 @@ func (t *StateRender) updateImage() {
 		if t.check.clickedOnWhichApp == "start" && t.check.clickedOnWhichApp_State == "true"{
 			startMenu.RunUpMove()
 				startMenu.StartMenu_Icon_Run_MoveUp()
+		}
+		if t.check.clickedOnWhichApp == "news" && t.check.clickedOnWhichApp_State == "true"{
+		news.News_RunUpMove()
 		}
 		res,err := fyne.LoadResourceFromPath(t.check.openedState)
 		if err != nil {

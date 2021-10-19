@@ -1,13 +1,12 @@
 package startMenuLayout
 
 import (
+		apps "pepcodingContest/apps"
 	"image/color"
 	"log"
 
 	"fyne.io/fyne/v2"
-
 	"fyne.io/fyne/v2/canvas"
-	// "fyne.io/fyne/v2/internal/app"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
@@ -24,11 +23,15 @@ type MenuStateCheck struct {
 	State MenuCheckState
 	normalState string
 	openedState string
+	clickedOnwhichApp string
+	clickedOnwhichApp_state string
+
 	// passFunc func()
 }
 
 func NewMenuStateCheck(array []string) *MenuStateCheck {
-	c := &MenuStateCheck{normalState:array[0],openedState: array[1] }
+	c := &MenuStateCheck{normalState:array[0],openedState: array[1],clickedOnwhichApp: array[2],
+		clickedOnwhichApp_state: "none",}
 	c.ExtendBaseWidget(c)
 	return c
 }
@@ -39,6 +42,15 @@ func (c *MenuStateCheck) Tapped(_ *fyne.PointEvent) {
 	} else {
 		c.State++
 	}
+
+
+if c.clickedOnwhichApp_state == "none"{
+	c.clickedOnwhichApp_state = "true"
+}else if c.clickedOnwhichApp_state == "true"{
+	c.clickedOnwhichApp_state = "false"
+}else if c.clickedOnwhichApp_state == "false"{
+	c.clickedOnwhichApp_state = "true"
+}
 
 	c.Refresh()
 }
@@ -90,6 +102,20 @@ func (t *MenuStateRender) updateImage() {
 		}
 		t.img.Resource =theme.NewThemedResource(res)
 	default:
+
+
+		if t.check.clickedOnwhichApp == "codeView" && t.check.clickedOnwhichApp_state == "true"{
+			apps.CodeViewApp()
+		}
+
+
+		if t.check.clickedOnwhichApp == "notepad" && t.check.clickedOnwhichApp_state == "true"{
+			apps.NoteApp()
+		}
+
+
+
+		
 		res,err := fyne.LoadResourceFromPath(t.check.openedState)
 		if err != nil {
 			log.Println("Failed to load indeterminate resource")
