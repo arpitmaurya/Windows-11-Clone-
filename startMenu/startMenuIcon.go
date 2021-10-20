@@ -11,47 +11,25 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-type MenuCheckState int
-
-const (
-	CheckOff MenuCheckState = iota
-	CheckOn
-)
-
 type MenuStateCheck struct {
 	widget.BaseWidget
-	State MenuCheckState
 	normalState string
-	openedState string
 	clickedOnwhichApp string
 	clickedOnwhichApp_state string
-
-	// passFunc func()
 }
 
 func NewMenuStateCheck(array []string) *MenuStateCheck {
-	c := &MenuStateCheck{normalState:array[0],openedState: array[1],clickedOnwhichApp: array[2],
+	c := &MenuStateCheck{normalState:array[0],clickedOnwhichApp: array[1],
 		clickedOnwhichApp_state: "none",}
 	c.ExtendBaseWidget(c)
 	return c
 }
 
 func (c *MenuStateCheck) Tapped(_ *fyne.PointEvent) {
-	if c.State == CheckOn {
-		c.State = CheckOff
-	} else {
-		c.State++
-	}
-
 
 if c.clickedOnwhichApp_state == "none"{
 	c.clickedOnwhichApp_state = "true"
-}else if c.clickedOnwhichApp_state == "true"{
-	c.clickedOnwhichApp_state = "false"
-}else if c.clickedOnwhichApp_state == "false"{
-	c.clickedOnwhichApp_state = "true"
 }
-
 	c.Refresh()
 }
 
@@ -92,35 +70,19 @@ func (t *MenuStateRender) Refresh() {
 func (t *MenuStateRender) updateImage() {
 	defer t.img.Refresh()
 
-	switch t.check.State {
-	case CheckOff:
-		
-		res,err := fyne.LoadResourceFromPath(t.check.normalState)
-		if err != nil {
-			log.Println("Failed to load indeterminate resource")
-			return
-		}
-		t.img.Resource =theme.NewThemedResource(res)
+	switch t.check.clickedOnwhichApp_state=="true" {
 	default:
-
-
 		if t.check.clickedOnwhichApp == "codeView" && t.check.clickedOnwhichApp_state == "true"{
 			apps.CodeViewApp()
 			RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}
-
-
 		if t.check.clickedOnwhichApp == "notepad" && t.check.clickedOnwhichApp_state == "true"{
 			apps.NoteApp()
 				RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}
-
-
-
-		
-		res,err := fyne.LoadResourceFromPath(t.check.openedState)
+		res,err := fyne.LoadResourceFromPath(t.check.normalState)
 		if err != nil {
 			log.Println("Failed to load indeterminate resource")
 			return

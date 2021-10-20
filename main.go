@@ -1,8 +1,6 @@
 package main
 
 import (
-	// "image/color"
-	// "log"
 	news "pepcodingContest/news"
 	startMenu "pepcodingContest/startMenu"
 	taskbar "pepcodingContest/taskbar"
@@ -14,8 +12,6 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
 )
-
-
 
 func main() {
 	

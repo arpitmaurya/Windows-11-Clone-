@@ -83,23 +83,17 @@ func StartMenu_Icon_Run_MoveDown(){
 }
 
 func StartMenuIconLayout_UI() fyne.CanvasObject{
-	 calc := []string{"D:/pepcodingContest/img/calcLogo.png",
-		"D:/pepcodingContest/img/calcLogo.png","calc"}
+	 calc := []string{"D:/pepcodingContest/img/calcLogo.png","calc"}
 
-	 codeView := []string{"D:/pepcodingContest/img/codeView.png",
-		"D:/pepcodingContest/img/codeView.png","codeView"}
+	 codeView := []string{"D:/pepcodingContest/img/codeView.png","codeView"}
 
-	 notepad := []string{"D:/pepcodingContest/img/notepad.png",
-		"D:/pepcodingContest/img/notepad.png","notepad"}
+	 notepad := []string{"D:/pepcodingContest/img/notepad.png","notepad"}
 
-	 weather := []string{"D:/pepcodingContest/img/weather.png",
-		"D:/pepcodingContest/img/weather.png","weather"}
+	 weather := []string{"D:/pepcodingContest/img/weather.png","weather"}
 
-	 todo := []string{"D:/pepcodingContest/img/todo.png",
-		"D:/pepcodingContest/img/todo.png","todo"}
+	 todo := []string{"D:/pepcodingContest/img/todo.png","todo"}
 
-	 wallpaper := []string{"D:/pepcodingContest/img/wallpaper.png",
-		"D:/pepcodingContest/img/wallpaper.png","wallpaper"}
+	 wallpaper := []string{"D:/pepcodingContest/img/wallpaper.png","wallpaper"}
 
 
 	newContainer := container.New(&startMenuIconLayout{},
