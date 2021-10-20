@@ -106,11 +106,15 @@ func (t *MenuStateRender) updateImage() {
 
 		if t.check.clickedOnwhichApp == "codeView" && t.check.clickedOnwhichApp_state == "true"{
 			apps.CodeViewApp()
+			RunUpDown()
+			StartMenu_Icon_Run_MoveDown()
 		}
 
 
 		if t.check.clickedOnwhichApp == "notepad" && t.check.clickedOnwhichApp_state == "true"{
 			apps.NoteApp()
+				RunUpDown()
+			StartMenu_Icon_Run_MoveDown()
 		}
 
 
