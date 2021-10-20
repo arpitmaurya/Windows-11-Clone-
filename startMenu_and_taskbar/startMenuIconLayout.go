@@ -1,4 +1,4 @@
-package startMenuLayout
+package startMenu_and_taskbar
 
 import (
 	"fyne.io/fyne/v2"
@@ -83,6 +83,7 @@ func StartMenu_Icon_Run_MoveDown(){
 }
 
 func StartMenuIconLayout_UI() fyne.CanvasObject{
+	
 	 calc := []string{"D:/pepcodingContest/img/calcLogo.png","calc"}
 
 	 codeView := []string{"D:/pepcodingContest/img/codeView.png","codeView"}

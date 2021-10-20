@@ -1,8 +1,6 @@
-package taskbarIcon
+package startMenu_and_taskbar
 
 import (
-	
-		startMenu "pepcodingContest/startMenu"
 		news "pepcodingContest/news"
 	"image/color"
 	"log"
@@ -96,8 +94,8 @@ func (t *StateRender) updateImage() {
 	switch t.check.State {
 		case CheckOff:
 		if t.check.clickedOnWhichApp == "start" && t.check.clickedOnWhichApp_State == "false"{
-			startMenu.RunUpDown()
-				startMenu.StartMenu_Icon_Run_MoveDown()
+			RunUpDown()
+			StartMenu_Icon_Run_MoveDown()
 		}
 
 		if t.check.clickedOnWhichApp == "news" && t.check.clickedOnWhichApp_State == "false"{
@@ -112,8 +110,8 @@ func (t *StateRender) updateImage() {
 		t.img.Resource =theme.NewThemedResource(res)
 	case CheckOn:
 		if t.check.clickedOnWhichApp == "start" && t.check.clickedOnWhichApp_State == "true"{
-			startMenu.RunUpMove()
-				startMenu.StartMenu_Icon_Run_MoveUp()
+			RunUpMove()
+			StartMenu_Icon_Run_MoveUp()
 		}
 		if t.check.clickedOnWhichApp == "news" && t.check.clickedOnWhichApp_State == "true"{
 		news.News_RunUpMove()

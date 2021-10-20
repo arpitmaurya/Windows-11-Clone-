@@ -2,9 +2,7 @@ package main
 
 import (
 	news "pepcodingContest/news"
-	startMenu "pepcodingContest/startMenu"
-	taskbar "pepcodingContest/taskbar"
-	taskbarIcon "pepcodingContest/taskbar/taskbar_icon_layoutAndIcon"
+	startMenu_and_taskbar "pepcodingContest/startMenu_and_taskbar"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -21,9 +19,9 @@ func main() {
 	myWindow := myApp.NewWindow("Pepcoding Contest Virtual Os - ArpitMaurya")
 	wallpapper := canvas.NewImageFromFile("D:/pepcodingContest/img/wallpaper_light.jpg")
 
-	myWindow.SetContent( container.NewBorder(nil,nil,nil,nil,wallpapper,taskbar.Taskbar_layout_UI(),
-	taskbarIcon.TaskbarIcon_layout_UI(),startMenu.StartMenuLayout_UI(),
-	startMenu.StartMenuIconLayout_UI(),news.NewsLayout_UI(),),	
+	myWindow.SetContent( container.NewBorder(nil,nil,nil,nil,wallpapper,startMenu_and_taskbar.Taskbar_layout_UI(),
+	startMenu_and_taskbar.TaskbarIcon_layout_UI(),startMenu_and_taskbar.StartMenuLayout_UI(),
+	startMenu_and_taskbar.StartMenuIconLayout_UI(),news.NewsLayout_UI(),),	
 
 )
 	res,_ := fyne.LoadResourceFromPath("D:/pepcodingContest/img/logo.png")

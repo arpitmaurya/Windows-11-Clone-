@@ -1,4 +1,4 @@
-package taskbar
+package startMenu_and_taskbar
 
 import (
 

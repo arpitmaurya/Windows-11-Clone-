@@ -1,4 +1,4 @@
-package startMenuLayout
+package startMenu_and_taskbar
 
 import (
 		apps "pepcodingContest/apps"
@@ -48,8 +48,7 @@ func (t *MenuStateRender) BackgroundColor() color.Color {
 	return color.Transparent
 }
 
-func (t *MenuStateRender) Destroy() {
-}
+func (t *MenuStateRender) Destroy() {}
 
 func (t *MenuStateRender) Layout(_ fyne.Size) {
 	t.img.Resize(fyne.NewSize(60,60))

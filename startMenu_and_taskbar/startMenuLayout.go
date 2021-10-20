@@ -1,4 +1,4 @@
-package startMenuLayout
+package startMenu_and_taskbar
 
 import (
 	"fyne.io/fyne/v2"
