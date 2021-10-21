@@ -15,7 +15,7 @@ import (
 	// "fyne.io/fyne/v2/widget"
 	"encoding/json"
 )
-
+var place string = "Mumbai"
 func WeatherFunc(){
 
 	window :=fyne.CurrentApp().NewWindow("Weather")
@@ -30,18 +30,19 @@ func WeatherFunc(){
  img2 := canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper.png")
 	img2.Resize(fyne.NewSize(300,500))
 
-		res,err := http.Get("http://api.openweathermap.org/data/2.5/weather?q=mumbai&appid=03e1063ba06ab6430556eb0e2fc3997e")
+		res,err := http.Get(fmt.Sprint("http://api.openweathermap.org/data/2.5/weather?q=",place,"&appid=03e1063ba06ab6430556eb0e2fc3997e"))
 	if err!=nil{
 		fmt.Print(err)
 	}
 	
-	selectRegion := widget.NewSelect([]string{"Mumbai", "Delhi","Bangalore"}, func(s string) {
-fmt.Println("Selected", s)
+	selectRegion := widget.NewSelect([]string{"Mumbai","Ranchi","Delhi","Bangalore"}, func(s string) {
+		place = s
+	locationChange(window)
+
 })
+
 selectRegion.Resize(fyne.NewSize(200,10))
-selectRegion.PlaceHolder = "Mumbai"
-
-
+selectRegion.PlaceHolder = place
 		defer res.Body.Close()
 		body,err := ioutil.ReadAll(res.Body)
 		if err!=nil{
@@ -71,12 +72,60 @@ selectRegion.PlaceHolder = "Mumbai"
 }
 
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse and unparse this JSON data, add this code to your project and do:
-//
-//    weather, err := UnmarshalWeather(bytes)
-//    bytes, err = weather.Marshal()
+func locationChange(window fyne.Window){
+	
+img2 := canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper.png")
+	if place =="Delhi"{
+	img2 = canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper_2.png")
+	}else if place == "Ranchi"{
+		img2 = canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper_3.png")
+		}else if place == "Bangalore"{
+		img2 = canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper_4.png")
 
+	}
+ 
+	img2.Resize(fyne.NewSize(300,500))
+
+
+		res,err := http.Get(fmt.Sprint("http://api.openweathermap.org/data/2.5/weather?q=",place,"&appid=03e1063ba06ab6430556eb0e2fc3997e"))
+	if err!=nil{
+		fmt.Print(err)
+	}
+	
+		selectRegion := widget.NewSelect([]string{"Mumbai","Ranchi","Delhi","Bangalore"}, func(s string) {
+		place = s
+	locationChange(window)
+
+})
+selectRegion.Resize(fyne.NewSize(200,10))
+selectRegion.PlaceHolder = place
+
+		defer res.Body.Close()
+		body,err := ioutil.ReadAll(res.Body)
+		if err!=nil{
+		fmt.Print(err)
+		}
+
+		weathers,err:=UnmarshalWeather(body)
+			if err!=nil{
+			fmt.Print(err)
+			}
+
+			temp := canvas.NewText(fmt.Sprint(int32((weathers.Main.Temp)-273.15)),color.Black)
+			temp.TextSize = 90
+				temp.TextStyle = fyne.TextStyle{Bold: true,}
+		
+			label_Celsius  := canvas.NewText(fmt.Sprint(weathers.Sys.Country,", ",weathers.Name,", °C"),color.Black)
+			log.Println(weathers.Wind.Speed)
+			label_Wind_Speed  := canvas.NewText(fmt.Sprint("Wind Speed ",int64(weathers.Wind.Deg),"°"),color.Black)
+
+
+	window.SetContent(container.NewBorder(nil,nil,nil,nil,img2,container.NewVBox(selectRegion,container.NewCenter(temp),
+	container.NewCenter(label_Celsius),
+	container.NewCenter(label_Wind_Speed),
+	
+	)))
+} 
 
 
 func UnmarshalWeather(data []byte) (Weather, error) {

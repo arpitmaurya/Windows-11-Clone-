@@ -21,9 +21,7 @@ func main() {
 
 	myWindow.SetContent( container.NewBorder(nil,nil,nil,nil,wallpapper,startMenu_and_taskbar.Taskbar_layout_UI(),
 	startMenu_and_taskbar.TaskbarIcon_layout_UI(),startMenu_and_taskbar.StartMenuLayout_UI(),
-	startMenu_and_taskbar.StartMenuIconLayout_UI(),news.NewsLayout_UI(),),	
-
-)
+	startMenu_and_taskbar.StartMenuIconLayout_UI(),news.NewsLayout_UI(),),)
 	res,_ := fyne.LoadResourceFromPath("D:/pepcodingContest/img/logo.png")
 	myWindow.SetIcon(res)
 
