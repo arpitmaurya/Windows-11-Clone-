@@ -1,7 +1,10 @@
 package apps
 
 import (
+	"fmt"
 	"image/color"
+
+	"strconv"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
@@ -9,6 +12,7 @@ import (
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	"github.com/Knetic/govaluate"
 )
 
 func Calc(){
@@ -22,34 +26,90 @@ func Calc(){
 	btnTypeLabel := widget.NewEntry()
 	btnTypeLabel.SetText(" ")
 
-	ansLabel := canvas.NewText(" 0",color.Black)
+	ansLabel := canvas.NewText("0",color.Black)
 	ansLabel.TextSize = 50
-	btn0 := widget.NewButton("0",func() {})
-	btn1 := widget.NewButton("1",func() {})
-	btn2 := widget.NewButton("2",func() {})
-	btn3 := widget.NewButton("3",func() {})
-	btn4 := widget.NewButton("4",func() {})
-	btn5 := widget.NewButton("5",func() {})
-	btn6 := widget.NewButton("6",func() {})
-	btn7 := widget.NewButton("7",func() {})
-	btn8 := widget.NewButton("8",func() {})
-	btn9 := widget.NewButton("9",func() {})
-	btnDot:=widget.NewButton(".",func() {})
-	btnEqual :=widget.NewButton("=",func() {})
+	btn0 := widget.NewButton("0",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"0")
+	})
+	btn1 := widget.NewButton("1",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"1")
+	})
+	btn2 := widget.NewButton("2",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"2")
+	})
+	btn3 := widget.NewButton("3",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"3")
+	})
+	btn4 := widget.NewButton("4",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"4")
+	})
+	btn5 := widget.NewButton("5",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"5")
+	})
+	btn6 := widget.NewButton("6",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"6")
+	})
+	btn7 := widget.NewButton("7",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"7")
+	})
+	btn8 := widget.NewButton("8",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"8")
+	})
+	btn9 := widget.NewButton("9",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"9")
+	})
+	btnDot:=widget.NewButton(".",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+".")
+	})
+	btnEqual :=widget.NewButton("=",func() {
+
+		expression, _ := govaluate.NewEvaluableExpression(fmt.Sprint(btnTypeLabel.Text));
+		parameters := make(map[string]interface{})
+			result, _ := expression.Evaluate(parameters);
+			ansLabel.Text =fmt.Sprint(result)
+			ansLabel.Refresh()
+	})
 	btnEqual.Importance = widget.HighImportance
-	btnAdd :=widget.NewButton("+",func() {})
+	btnAdd :=widget.NewButton("+",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"+")
+	})
 	btnAdd.Importance = widget.HighImportance
-	btnSub :=widget.NewButton("-",func() {})
+	btnSub :=widget.NewButton("-",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"-")
+	})
 	btnSub.Importance = widget.HighImportance
-	btnMul :=widget.NewButton("*",func() {})
+	btnMul :=widget.NewButton("*",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"*")
+	})
 	btnMul.Importance = widget.HighImportance
-	btnDiv :=widget.NewButton("/",func() {})
+	btnDiv :=widget.NewButton("/",func() {
+		btnTypeLabel.SetText(btnTypeLabel.Text+"/")
+	})
 	btnDiv.Importance = widget.HighImportance
 
-	btnClear := widget.NewButtonWithIcon("",theme.DeleteIcon(),func() {})
+	btnClear := widget.NewButtonWithIcon("",theme.DeleteIcon(),func() {
+		btnTypeLabel.SetText("")
+		ansLabel.Text = "0"
+		ansLabel.Refresh()
+	})
 	btnClear.Importance =  widget.HighImportance
-	btnSquare := widget.NewButton("x²",func() {})
-	btnSquareRoot := widget.NewButton("SQRT",func() {})
+	btnSquare := widget.NewButton("x²",func() {
+		expression, _ := govaluate.NewEvaluableExpression(fmt.Sprint(btnTypeLabel.Text));
+		parameters := make(map[string]interface{})
+		result, _ := expression.Evaluate(parameters);
+		newValue,_ :=   strconv.Atoi(fmt.Sprint(result))
+		ansLabel.Text =fmt.Sprint(newValue*newValue)
+		ansLabel.Refresh()
+	})
+	btnSquareRoot := widget.NewButton("X³",func() {
+		expression, _ := govaluate.NewEvaluableExpression(fmt.Sprint(btnTypeLabel.Text));
+		parameters := make(map[string]interface{})
+		result, _ := expression.Evaluate(parameters);
+		newValue,_ :=   strconv.Atoi(fmt.Sprint(result))
+		ansLabel.Text =fmt.Sprint(newValue*newValue*newValue)
+		ansLabel.Refresh()
+
+	})
 
 	window.SetContent(container.NewVBox(
 		layout.NewSpacer(),
