@@ -1,6 +1,9 @@
 package startMenu_and_taskbar
 
 import (
+	"fmt"
+	switchMode "pepcodingContest/theme"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 )
@@ -94,7 +97,9 @@ func StartMenuIconLayout_UI() fyne.CanvasObject{
 
 	 todo := []string{"D:/pepcodingContest/img/todo.png","todo"}
 
-	 wallpaper := []string{"D:/pepcodingContest/img/store_light.png","store"}
+	 wallpaper := []string{fmt.Sprint("D:/pepcodingContest/img/store_",switchMode.SwitchMode,".png"),"store"}
+
+	
 
 
 	newContainer := container.New(&startMenuIconLayout{},

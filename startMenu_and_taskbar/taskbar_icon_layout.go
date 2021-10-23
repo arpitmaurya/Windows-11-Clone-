@@ -1,6 +1,9 @@
 package startMenu_and_taskbar
 
 import (
+	"fmt"
+	switchMode "pepcodingContest/theme"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 )
@@ -45,13 +48,13 @@ func (tbi_l *taskbarIcon_layout) Layout(items []fyne.CanvasObject,size fyne.Size
 
 func TaskbarIcon_layout_UI() fyne.CanvasObject{
 	 start := []string{"D:/pepcodingContest/img/logo2.png",
-		"D:/pepcodingContest/img/start_logo_started.png","start"}
+		fmt.Sprint("D:/pepcodingContest/img/start_logo_started_",switchMode.SwitchMode,".png"),"start"}
 
 	 setting := []string{"D:/pepcodingContest/img/settingLogo.png",
-		"D:/pepcodingContest/img/settingLogo_started.png","setting"}
+		fmt.Sprint("D:/pepcodingContest/img/settingLogo_started_",switchMode.SwitchMode,".png"),"setting"}
 
 	 news := []string{"D:/pepcodingContest/img/newsLogo.png",
-		"D:/pepcodingContest/img/newsLogo_Started.png","news"}
+		fmt.Sprint("D:/pepcodingContest/img/newsLogo_Started_",switchMode.SwitchMode,".png"),"news"}
 
 	newContainer := container.New(&taskbarIcon_layout{},NewStateCheck(start),NewStateCheck(setting),NewStateCheck(news))
 	return newContainer

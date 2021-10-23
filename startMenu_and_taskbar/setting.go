@@ -1,6 +1,9 @@
 package startMenu_and_taskbar
 
 import (
+	"fmt"
+	switchMode "pepcodingContest/theme"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
@@ -19,6 +22,9 @@ func ( nl *settingLayout) MinSize(items []fyne.CanvasObject) fyne.Size{
 func (nl *settingLayout) Layout(items []fyne.CanvasObject,size fyne.Size){
 			items[0].Move(fyne.NewPos(size.Width,size.Height))
 		items[0].Resize(fyne.NewSize(size.Width/3.5,180))
+		if switchMode.SwitchMode == "dark"{
+			items[0].Resize(fyne.NewSize(size.Width/3.7,160))
+		}
 		setting_global_width = size.Width
 		setting_global_height = size.Height
 		setting_itemData = items[0]
@@ -26,6 +32,9 @@ func (nl *settingLayout) Layout(items []fyne.CanvasObject,size fyne.Size){
 
 func Setting_RunUpMove(){
 				setting_itemData.Move(fyne.NewPos(setting_global_width/2-190,(setting_global_height/1.5+19)))
+				if switchMode.SwitchMode == "dark"{
+					setting_itemData.Move(fyne.NewPos(setting_global_width/2-178.5,(setting_global_height/1.5+25)))
+				}
 }
 
 func Setting_RunUpDown(){
@@ -33,7 +42,8 @@ func Setting_RunUpDown(){
 }
 
 func SettingLayout_UI() fyne.CanvasObject{
-	item:=canvas.NewImageFromFile("D:/pepcodingContest/img/setting_light.png")
+
+	item:=canvas.NewImageFromFile(fmt.Sprint("D:/pepcodingContest/img/setting_",switchMode.SwitchMode,".png"))
 	newContainer := container.New(&settingLayout{},item)
 	return newContainer
 }

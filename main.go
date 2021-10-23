@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	news "pepcodingContest/news"
 	startMenu_and_taskbar "pepcodingContest/startMenu_and_taskbar"
+	switchMode "pepcodingContest/theme"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -15,9 +17,13 @@ func main() {
 	
 	myApp := app.New()
 	myApp.Settings().SetTheme(theme.LightTheme())
+	if switchMode.SwitchMode == "dark"{
+		myApp.Settings().SetTheme(theme.DarkTheme())
+	}
 
 	myWindow := myApp.NewWindow("Pepcoding Contest Virtual Os - ArpitMaurya")
-	wallpapper := canvas.NewImageFromFile("D:/pepcodingContest/img/wallpaper_light.jpg")
+	wallpapper := canvas.NewImageFromFile(fmt.Sprint("D:/pepcodingContest/img/wallpaper_",
+	switchMode.SwitchMode,".jpg"))
 
 	myWindow.SetContent( container.NewBorder(nil,nil,nil,nil,wallpapper,startMenu_and_taskbar.Taskbar_layout_UI(),
 	startMenu_and_taskbar.TaskbarIcon_layout_UI(),startMenu_and_taskbar.StartMenuLayout_UI(),

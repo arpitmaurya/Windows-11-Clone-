@@ -1,9 +1,10 @@
 package startMenu_and_taskbar
 
 import (
-	"fmt"
 	"image/color"
 	"log"
+	switchMode "pepcodingContest/theme"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/theme"
@@ -71,10 +72,12 @@ func (t *settingStateRender) updateImage() {
 	switch t.check.clickedOnwhichApp_state=="true" {
 	default:
 		if t.check.clickedOnwhichApp == "lightMode" && t.check.clickedOnwhichApp_state == "true"{
-				fmt.Println("arpitMaurya")
+				switchMode.SwitchMode = "light"
+				log.Println(switchMode.SwitchMode)
 		}
 		if t.check.clickedOnwhichApp == "darkMode" && t.check.clickedOnwhichApp_state == "true"{
-				fmt.Println("arpitMaurya")
+				switchMode.SwitchMode = "dark"
+				log.Println(switchMode.SwitchMode)
 		}
 
 		res,err := fyne.LoadResourceFromPath(t.check.normalState)

@@ -81,13 +81,18 @@ func (t *MenuStateRender) updateImage() {
 				RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}
-		if t.check.clickedOnwhichApp == "weather" && t.check.clickedOnwhichApp_state == "true"{
-			apps.WeatherFunc()
+		// if t.check.clickedOnwhichApp == "weather" && t.check.clickedOnwhichApp_state == "true"{
+		// 	apps.WeatherFunc()
+		// 		RunUpDown()
+		// 	StartMenu_Icon_Run_MoveDown()
+		// }
+		if t.check.clickedOnwhichApp == "calc" && t.check.clickedOnwhichApp_state == "true"{
+			apps.Calc()
 				RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}
-		if t.check.clickedOnwhichApp == "calc" && t.check.clickedOnwhichApp_state == "true"{
-			apps.Calc()
+		if t.check.clickedOnwhichApp == "weather" && t.check.clickedOnwhichApp_state == "true"{
+			apps.WeatherFunc()
 				RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}

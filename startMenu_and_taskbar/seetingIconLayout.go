@@ -1,6 +1,8 @@
 package startMenu_and_taskbar
 
 import (
+	switchMode "pepcodingContest/theme"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 )
@@ -45,7 +47,6 @@ func (tbi_l *settingIconLayout) Layout(items []fyne.CanvasObject,size fyne.Size)
 	seetingIcon_itemData = items
 	seetingIcon_global_count = count
 	myPos := fyne.NewPos((seetingIcon_global_width/2.25-5.5)-float32(count*23),size.Height)
-	// myPos := fyne.NewPos((400)-float32(count*23),(400))
 			for _,obj := range items{
 				if !obj.Visible(){
 					continue
@@ -59,6 +60,9 @@ func (tbi_l *settingIconLayout) Layout(items []fyne.CanvasObject,size fyne.Size)
 
 func SeetingIcon_Run_MoveUp(){
 	myPos := fyne.NewPos((seetingIcon_global_width/2-167.5)-float32(seetingIcon_global_count*23),(seetingIcon_global_height/2+174))
+	if switchMode.SwitchMode == "dark"{
+		myPos = fyne.NewPos((seetingIcon_global_width/2-163.5)-float32(seetingIcon_global_count*23),(seetingIcon_global_height/2+172))
+	}
 					for _,obj := range seetingIcon_itemData{
 				if !obj.Visible(){
 					continue
@@ -66,7 +70,7 @@ func SeetingIcon_Run_MoveUp(){
 				obj.Move(myPos)
 				myPos.X = myPos.X+190
 				
-				obj.Resize(fyne.NewSize(60,60))
+				obj.Resize(fyne.NewSize(180,125))
 			}
 }
 func SeetingIcon_Run_MoveDown(){
@@ -85,7 +89,7 @@ func SeetingIcon_Run_MoveDown(){
 func SettingIconLayout_UI() fyne.CanvasObject{
 
 	 calc := []string{"D:/pepcodingContest/img/seeting_screen_1_light.png","lightMode"}
-	 codeView := []string{"D:/pepcodingContest/img/seeting_screen_1_light.png","darkMode"}
+	 codeView := []string{"D:/pepcodingContest/img/seeting_screen_1_dark.png","darkMode"}
 
 	newContainer := container.New(&settingIconLayout{},
 		NewsettingStateCheck(calc),
