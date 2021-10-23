@@ -53,7 +53,6 @@ func TaskbarIcon_layout_UI() fyne.CanvasObject{
 	 news := []string{"D:/pepcodingContest/img/newsLogo.png",
 		"D:/pepcodingContest/img/newsLogo_Started.png","news"}
 
-
 	newContainer := container.New(&taskbarIcon_layout{},NewStateCheck(start),NewStateCheck(setting),NewStateCheck(news))
 	return newContainer
 }

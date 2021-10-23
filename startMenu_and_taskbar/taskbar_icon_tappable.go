@@ -101,6 +101,11 @@ func (t *StateRender) updateImage() {
 		if t.check.clickedOnWhichApp == "news" && t.check.clickedOnWhichApp_State == "false"{
 		news.News_RunUpDown()
 		}
+
+		if t.check.clickedOnWhichApp == "setting" && t.check.clickedOnWhichApp_State == "false"{
+			Setting_RunUpDown()
+			SeetingIcon_Run_MoveDown()
+		}
 		
 		res,err := fyne.LoadResourceFromPath(t.check.normalState)
 		if err != nil {
@@ -115,6 +120,10 @@ func (t *StateRender) updateImage() {
 		}
 		if t.check.clickedOnWhichApp == "news" && t.check.clickedOnWhichApp_State == "true"{
 		news.News_RunUpMove()
+		}
+		if t.check.clickedOnWhichApp == "setting" && t.check.clickedOnWhichApp_State == "true"{
+			Setting_RunUpMove()
+			SeetingIcon_Run_MoveUp()
 		}
 		res,err := fyne.LoadResourceFromPath(t.check.openedState)
 		if err != nil {

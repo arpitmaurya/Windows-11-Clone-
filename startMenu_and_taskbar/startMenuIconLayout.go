@@ -94,7 +94,7 @@ func StartMenuIconLayout_UI() fyne.CanvasObject{
 
 	 todo := []string{"D:/pepcodingContest/img/todo.png","todo"}
 
-	 wallpaper := []string{"D:/pepcodingContest/img/wallpaper.png","wallpaper"}
+	 wallpaper := []string{"D:/pepcodingContest/img/store_light.png","store"}
 
 
 	newContainer := container.New(&startMenuIconLayout{},
