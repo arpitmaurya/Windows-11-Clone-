@@ -6,13 +6,10 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
-
-	// "fyne.io/fyne/v2/widget"
 	"encoding/json"
 )
 var place string = "Mumbai"

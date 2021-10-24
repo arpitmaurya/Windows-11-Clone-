@@ -101,6 +101,11 @@ func (t *MenuStateRender) updateImage() {
 				RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}
+		if t.check.clickedOnwhichApp == "todo" && t.check.clickedOnwhichApp_state == "true"{
+			apps.ToDo()
+				RunUpDown()
+			StartMenu_Icon_Run_MoveDown()
+		}
 		res,err := fyne.LoadResourceFromPath(t.check.normalState)
 		if err != nil {
 			log.Println("Failed to load indeterminate resource")

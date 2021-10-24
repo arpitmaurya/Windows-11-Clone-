@@ -73,11 +73,10 @@ func (t *settingStateRender) updateImage() {
 	default:
 		if t.check.clickedOnwhichApp == "lightMode" && t.check.clickedOnwhichApp_state == "true"{
 				switchMode.SwitchMode = "light"
-				log.Println(switchMode.SwitchMode)
+			
 		}
 		if t.check.clickedOnwhichApp == "darkMode" && t.check.clickedOnwhichApp_state == "true"{
 				switchMode.SwitchMode = "dark"
-				log.Println(switchMode.SwitchMode)
 		}
 
 		res,err := fyne.LoadResourceFromPath(t.check.normalState)
@@ -88,4 +87,3 @@ func (t *settingStateRender) updateImage() {
 		t.img.Resource = theme.NewThemedResource(res)
 	}
 }
-

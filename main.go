@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	news "pepcodingContest/news"
 	startMenu_and_taskbar "pepcodingContest/startMenu_and_taskbar"
 	switchMode "pepcodingContest/theme"
@@ -20,6 +21,7 @@ func main() {
 	if switchMode.SwitchMode == "dark"{
 		myApp.Settings().SetTheme(theme.DarkTheme())
 	}
+	log.Println(switchMode.SwitchMode)
 
 	myWindow := myApp.NewWindow("Pepcoding Contest Virtual Os - ArpitMaurya")
 	wallpapper := canvas.NewImageFromFile(fmt.Sprint("D:/pepcodingContest/img/wallpaper_",
