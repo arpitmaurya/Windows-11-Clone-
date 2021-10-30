@@ -1,16 +1,17 @@
 package apps
 
 import (
+	"encoding/json"
 	"fmt"
 	"image/color"
 	"io/ioutil"
 	"log"
 	"net/http"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
-	"encoding/json"
 )
 var place string = "Mumbai"
 func WeatherFunc(){
@@ -19,12 +20,12 @@ func WeatherFunc(){
 	window.CenterOnScreen()
 	window.SetFixedSize(true)
 	window.Resize(fyne.NewSize(300,500))
-	img,_ := fyne.LoadResourceFromPath("D:/pepcodingContest/img/weather.png")
+	img,_ := fyne.LoadResourceFromPath("D:/Windows_11_clone/img/weather.png")
 	window.SetIcon(img)
 	window.SetPadded(false)
 
 
- img2 := canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper.png")
+ img2 := canvas.NewImageFromFile("D:/Windows_11_clone/img/weather_wallpaper.png")
 	img2.Resize(fyne.NewSize(300,500))
 
 		res,err := http.Get(fmt.Sprint("http://api.openweathermap.org/data/2.5/weather?q=",place,"&appid=03e1063ba06ab6430556eb0e2fc3997e"))
@@ -70,14 +71,14 @@ selectRegion.PlaceHolder = place
 
 
 func locationChange(window fyne.Window){
-	
-img2 := canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper.png")
+
+img2 := canvas.NewImageFromFile("D:/Windows_11_clone/img/weather_wallpaper.png")
 	if place =="Delhi"{
-	img2 = canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper_2.png")
+	img2 = canvas.NewImageFromFile("D:/Windows_11_clone/img/weather_wallpaper_2.png")
 	}else if place == "Ranchi"{
-		img2 = canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper_3.png")
+		img2 = canvas.NewImageFromFile("D:/Windows_11_clone/img/weather_wallpaper_3.png")
 		}else if place == "Bangalore"{
-		img2 = canvas.NewImageFromFile("D:/pepcodingContest/img/weather_wallpaper_4.png")
+		img2 = canvas.NewImageFromFile("D:/Windows_11_clone/img/weather_wallpaper_4.png")
 
 	}
  

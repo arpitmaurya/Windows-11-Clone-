@@ -1,4 +1,4 @@
-module pepcodingContest
+module Windows_11_clone
 
 go 1.17
 
@@ -23,3 +23,5 @@ require (
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/text v0.3.3 // indirect
 )
+
+require gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect

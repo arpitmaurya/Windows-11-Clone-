@@ -1,8 +1,8 @@
 package startMenu_and_taskbar
 
 import (
+	switchMode "Windows_11_clone/theme"
 	"fmt"
-	switchMode "pepcodingContest/theme"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -87,17 +87,17 @@ func StartMenu_Icon_Run_MoveDown(){
 
 func StartMenuIconLayout_UI() fyne.CanvasObject{
 	
-	 calc := []string{"D:/pepcodingContest/img/calcLogo.png","calc"}
+	 calc := []string{"D:/Windows_11_clone/img/calcLogo.png","calc"}
 
-	 codeView := []string{"D:/pepcodingContest/img/codeView.png","codeView"}
+	 codeView := []string{"D:/Windows_11_clone/img/codeView.png","codeView"}
 
-	 notepad := []string{"D:/pepcodingContest/img/notepad.png","notepad"}
+	 notepad := []string{"D:/Windows_11_clone/img/notepad.png","notepad"}
 
-	 weather := []string{"D:/pepcodingContest/img/weather.png","weather"}
+	 weather := []string{"D:/Windows_11_clone/img/weather.png","weather"}
 
-	 todo := []string{"D:/pepcodingContest/img/todo.png","todo"}
+	 todo := []string{"D:/Windows_11_clone/img/todo.png","todo"}
 
-	 wallpaper := []string{fmt.Sprint("D:/pepcodingContest/img/store_",switchMode.SwitchMode,".png"),"store"}
+	 wallpaper := []string{fmt.Sprint("D:/Windows_11_clone/img/store_",switchMode.SwitchMode,".png"),"store"}
 
 	
 

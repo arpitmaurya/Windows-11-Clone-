@@ -1,9 +1,10 @@
 package startMenu_and_taskbar
 
 import (
-		news "pepcodingContest/news"
+	news "Windows_11_clone/news"
 	"image/color"
 	"log"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/theme"
@@ -24,7 +25,7 @@ type StateCheck struct {
 	openedState string
 	clickedOnWhichApp string
 	clickedOnWhichApp_State string
-	// passFunc func()
+
 }
 var (
 PassArray []string

@@ -55,7 +55,7 @@ func NoteApp(){
 
 	window.SetMainMenu(header)
 	window.SetContent(screenLabel)
-	img,_ := fyne.LoadResourceFromPath("D:/pepcodingContest/img/notepad.png")
+	img,_ := fyne.LoadResourceFromPath("D:/Windows_11_clone/img/notepad.png")
 	window.SetIcon(img)
 
 window.Show()

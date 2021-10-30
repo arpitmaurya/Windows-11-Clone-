@@ -3,7 +3,8 @@ package startMenu_and_taskbar
 import (
 	"fmt"
 
-	switchMode "pepcodingContest/theme"
+	switchMode "Windows_11_clone/theme"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
@@ -34,7 +35,7 @@ func RunUpDown(){
 }
 
 func StartMenuLayout_UI() fyne.CanvasObject{
-	item:=canvas.NewImageFromFile(fmt.Sprint("D:/pepcodingContest/img/startMenu_",switchMode.SwitchMode,".png"))
+	item:=canvas.NewImageFromFile(fmt.Sprint("D:/Windows_11_clone/img/startMenu_",switchMode.SwitchMode,".png"))
 	newContainer := container.New(&startMenuLayout{},item)
 	return newContainer
 }

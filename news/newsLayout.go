@@ -33,7 +33,7 @@ func News_RunUpDown(){
 }
 
 func NewsLayout_UI() fyne.CanvasObject{
-	item:=canvas.NewImageFromFile("D:/pepcodingContest/img/newsLayout.png")
+	item:=canvas.NewImageFromFile("D:/Windows_11_clone/img/newsLayout.png")
 	newContainer := container.New(&newsLayout{},item)
 	return newContainer
 }

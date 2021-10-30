@@ -1,8 +1,8 @@
 package startMenu_and_taskbar
 
 import (
+	switchMode "Windows_11_clone/theme"
 	"fmt"
-	switchMode "pepcodingContest/theme"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
@@ -43,7 +43,8 @@ func Setting_RunUpDown(){
 
 func SettingLayout_UI() fyne.CanvasObject{
 
-	item:=canvas.NewImageFromFile(fmt.Sprint("D:/pepcodingContest/img/setting_",switchMode.SwitchMode,".png"))
+	item:=canvas.NewImageFromFile(fmt.Sprint("D:/Windows_11_clone/img/setting_",switchMode.SwitchMode,".png"))
 	newContainer := container.New(&settingLayout{},item)
 	return newContainer
+	
 }

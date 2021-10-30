@@ -9,7 +9,7 @@ import (
 func Notepad_saveFile(){
 	screenLabel := widget.NewMultiLineEntry()
 	window := fyne.CurrentApp().NewWindow("Notepad - New File")
-	img,_ := fyne.LoadResourceFromPath("D:/pepcodingContest/img/notepad.png")
+	img,_ := fyne.LoadResourceFromPath("D:/Windows_11_clone/img/notepad.png")
 	window.SetIcon(img)
 
 	header := fyne.NewMainMenu(

@@ -1,9 +1,9 @@
 package startMenu_and_taskbar
 
 import (
+	switchMode "Windows_11_clone/theme"
 	"image/color"
 	"log"
-	switchMode "pepcodingContest/theme"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"

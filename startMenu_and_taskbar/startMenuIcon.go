@@ -1,7 +1,7 @@
 package startMenu_and_taskbar
 
 import (
-		apps "pepcodingContest/apps"
+	apps "Windows_11_clone/apps"
 	"image/color"
 	"log"
 
@@ -71,21 +71,19 @@ func (t *MenuStateRender) updateImage() {
 
 	switch t.check.clickedOnwhichApp_state=="true" {
 	default:
+		
 		if t.check.clickedOnwhichApp == "codeView" && t.check.clickedOnwhichApp_state == "true"{
 			apps.CodeViewApp()
 			RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}
+
 		if t.check.clickedOnwhichApp == "notepad" && t.check.clickedOnwhichApp_state == "true"{
 			apps.NoteApp()
 				RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}
-		// if t.check.clickedOnwhichApp == "weather" && t.check.clickedOnwhichApp_state == "true"{
-		// 	apps.WeatherFunc()
-		// 		RunUpDown()
-		// 	StartMenu_Icon_Run_MoveDown()
-		// }
+
 		if t.check.clickedOnwhichApp == "calc" && t.check.clickedOnwhichApp_state == "true"{
 			apps.Calc()
 				RunUpDown()

@@ -12,7 +12,7 @@ import (
 
 func CodeViewApp(){
 	window := fyne.CurrentApp().NewWindow("CodeView")
-	res,_ := fyne.LoadResourceFromPath("D:/pepcodingContest/img/codeView.png")
+	res,_ := fyne.LoadResourceFromPath("D:/Windows_11_clone/img/codeView.png")
 	window.SetIcon(res)
 	window.CenterOnScreen()
 	window.Resize(fyne.NewSize(800,600))

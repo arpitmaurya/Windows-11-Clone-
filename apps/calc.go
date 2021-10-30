@@ -21,7 +21,7 @@ func Calc(){
 	window.CenterOnScreen()
 	window.SetFixedSize(true)
 	window.Resize(fyne.NewSize(270,430))
-		img,_ := fyne.LoadResourceFromPath("D:/pepcodingContest/img/calcLogo.png")
+		img,_ := fyne.LoadResourceFromPath("D:/Windows_11_clone/img/calcLogo.png")
 	window.SetIcon(img)
 	btnTypeLabel := widget.NewEntry()
 	btnTypeLabel.SetText(" ")

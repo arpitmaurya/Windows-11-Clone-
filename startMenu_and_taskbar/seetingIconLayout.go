@@ -1,7 +1,7 @@
 package startMenu_and_taskbar
 
 import (
-	switchMode "pepcodingContest/theme"
+	switchMode "Windows_11_clone/theme"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -88,8 +88,8 @@ func SeetingIcon_Run_MoveDown(){
 
 func SettingIconLayout_UI() fyne.CanvasObject{
 
-	 calc := []string{"D:/pepcodingContest/img/seeting_screen_1_light.png","lightMode"}
-	 codeView := []string{"D:/pepcodingContest/img/seeting_screen_1_dark.png","darkMode"}
+	 calc := []string{"D:/Windows_11_clone/img/seeting_screen_1_light.png","lightMode"}
+	 codeView := []string{"D:/Windows_11_clone/img/seeting_screen_1_dark.png","darkMode"}
 
 	newContainer := container.New(&settingIconLayout{},
 		NewsettingStateCheck(calc),

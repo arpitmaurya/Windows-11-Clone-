@@ -1,14 +1,13 @@
 package apps
 
 import (
-
 	"encoding/json"
 	"io/ioutil"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
-	
 )
 
 func ToDo(){
@@ -25,7 +24,7 @@ func ToDo(){
 
 	json.Unmarshal(data_from_file,&todoContentArr)
 	window := fyne.CurrentApp().NewWindow("ToDo")
-		res,_ := fyne.LoadResourceFromPath("D:/pepcodingContest/img/todo.png")
+		res,_ := fyne.LoadResourceFromPath("D:/Windows_11_clone/img/todo.png")
 	window.SetIcon(res)
 	window.CenterOnScreen()
 	window.Resize(fyne.NewSize(800,600))

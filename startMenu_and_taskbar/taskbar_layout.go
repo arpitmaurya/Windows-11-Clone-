@@ -1,7 +1,8 @@
 package startMenu_and_taskbar
 
 import (
-	switchMode "pepcodingContest/theme"
+	switchMode "Windows_11_clone/theme"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
@@ -19,10 +20,12 @@ func (tl *taskbar_layout) Layout(items []fyne.CanvasObject,size fyne.Size){
 }
 
 func Taskbar_layout_UI() fyne.CanvasObject{
-	item:=canvas.NewImageFromFile("D:/pepcodingContest/img/taskbar_light.jpg")
+	
+	item:=canvas.NewImageFromFile("D:/Windows_11_clone/img/taskbar_light.jpg")
 	if switchMode.SwitchMode =="dark"{
-		item =canvas.NewImageFromFile("D:/pepcodingContest/img/taskbar_dark.png")
+		item =canvas.NewImageFromFile("D:/Windows_11_clone/img/taskbar_dark.png")
 	}
 	newContainer := container.New(&taskbar_layout{},item)
 	return newContainer
+
 }
