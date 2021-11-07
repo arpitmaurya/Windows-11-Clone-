@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	// "log"
 
 	news "Windows_11_clone/news"
 	startMenu_and_taskbar "Windows_11_clone/startMenu_and_taskbar"
@@ -24,7 +23,7 @@ func main() {
 		myApp.Settings().SetTheme(theme.DarkTheme())
 	}
 
-	// log.Println(switchMode.SwitchMode)
+
 
 	myWindow := myApp.NewWindow("windows 11 Clone- ArpitMaurya")
 
@@ -32,8 +31,10 @@ func main() {
 	switchMode.SwitchMode,".jpg"))
 
 	myWindow.SetContent( container.NewBorder(nil,nil,nil,nil,
-		wallpapper,startMenu_and_taskbar.Taskbar_layout_UI(),
+
+	wallpapper,startMenu_and_taskbar.Taskbar_layout_UI(),
 	startMenu_and_taskbar.TaskbarIcon_layout_UI(),
+
 	startMenu_and_taskbar.StartMenuLayout_UI(),
 	startMenu_and_taskbar.StartMenuIconLayout_UI(),
 	news.NewsLayout_UI(),startMenu_and_taskbar.SettingLayout_UI(),

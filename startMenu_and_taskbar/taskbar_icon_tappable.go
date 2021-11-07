@@ -25,12 +25,7 @@ type StateCheck struct {
 	openedState string
 	clickedOnWhichApp string
 	clickedOnWhichApp_State string
-
 }
-var (
-PassArray []string
-WhichApp string
-)
 
 func NewStateCheck(array []string) *StateCheck {
 	c := &StateCheck{normalState:array[0],openedState: array[1],clickedOnWhichApp: array[2],clickedOnWhichApp_State: "none"}

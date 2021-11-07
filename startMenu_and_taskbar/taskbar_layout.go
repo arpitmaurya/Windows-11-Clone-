@@ -25,6 +25,7 @@ func Taskbar_layout_UI() fyne.CanvasObject{
 	if switchMode.SwitchMode =="dark"{
 		item =canvas.NewImageFromFile("D:/Windows_11_clone/img/taskbar_dark.png")
 	}
+	
 	newContainer := container.New(&taskbar_layout{},item)
 	return newContainer
 

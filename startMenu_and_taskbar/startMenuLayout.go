@@ -15,6 +15,7 @@ var (
 	itemData fyne.CanvasObject
 )
 type startMenuLayout struct{}
+
 func ( tl *startMenuLayout) MinSize(items []fyne.CanvasObject) fyne.Size{
 	return items[0].MinSize()
 }

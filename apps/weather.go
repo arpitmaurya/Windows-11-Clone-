@@ -28,7 +28,7 @@ func WeatherFunc(){
  img2 := canvas.NewImageFromFile("D:/Windows_11_clone/img/weather_wallpaper.png")
 	img2.Resize(fyne.NewSize(300,500))
 
-		res,err := http.Get(fmt.Sprint("http://api.openweathermap.org/data/2.5/weather?q=",place,"&appid=03e1063ba06ab6430556eb0e2fc3997e"))
+	res,err := http.Get(fmt.Sprint("http://api.openweathermap.org/data/2.5/weather?q=",place,"&appid=03e1063ba06ab6430556eb0e2fc3997e"))
 	if err!=nil{
 		fmt.Print(err)
 	}
@@ -64,7 +64,6 @@ selectRegion.PlaceHolder = place
 	window.SetContent(container.NewBorder(nil,nil,nil,nil,img2,container.NewVBox(selectRegion,container.NewCenter(temp),
 	container.NewCenter(label_Celsius),
 	container.NewCenter(label_Wind_Speed),
-	
 	)))
 	window.Show()
 }
@@ -121,7 +120,6 @@ selectRegion.PlaceHolder = place
 	window.SetContent(container.NewBorder(nil,nil,nil,nil,img2,container.NewVBox(selectRegion,container.NewCenter(temp),
 	container.NewCenter(label_Celsius),
 	container.NewCenter(label_Wind_Speed),
-	
 	)))
 } 
 

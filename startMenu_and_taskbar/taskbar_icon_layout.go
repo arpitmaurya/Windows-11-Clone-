@@ -30,9 +30,6 @@ func (tbi_l *taskbarIcon_layout) Layout(items []fyne.CanvasObject,size fyne.Size
 		}
 		count++
 	}
-	if count==1{
-		count=0
-	}
 	
 	myPos := fyne.NewPos((size.Width/2)-float32(count*23),size.Height-42.5)
 			for _,obj := range items{

@@ -1,3 +1,3 @@
 package switchMode
 
-var SwitchMode string = "light"
+var SwitchMode string = "dark"

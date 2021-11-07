@@ -20,6 +20,5 @@ func Store(){
 	imgPage := canvas.NewImageFromFile(fmt.Sprint("D:/Windows_11_clone/img/storePage_",switchMode.SwitchMode,".jpg"))
 	imgPage.Resize(fyne.NewSize(1100,620))
 	window.SetContent(container.NewWithoutLayout(imgPage))
-
 	window.Show()
 }

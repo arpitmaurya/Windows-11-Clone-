@@ -58,19 +58,27 @@ func (tbi_l *startMenuIconLayout) Layout(items []fyne.CanvasObject,size fyne.Siz
 				
 				obj.Resize(fyne.NewSize(60,60))
 			}
+
 }
 
 func StartMenu_Icon_Run_MoveUp(){
-	myPos := fyne.NewPos((startMenu_Icon_global_width/2.25-5.5)-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height/5.5))
-					for _,obj := range startMenu_Icon_itemData{
+	myPos := fyne.NewPos((startMenu_Icon_global_width/2.2+1)-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height/5.5))
+
+					for i,obj := range startMenu_Icon_itemData{
 				if !obj.Visible(){
 					continue
 				}
+					if i==6 {
+					 myPos = fyne.NewPos((startMenu_Icon_global_width/2.2+1)-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height/3.7))
+					}
 				obj.Move(myPos)
 				myPos.X = myPos.X+75
 				
 				obj.Resize(fyne.NewSize(60,60))
+
 			}
+
+			
 }
 func StartMenu_Icon_Run_MoveDown(){
 	myPos := fyne.NewPos((startMenu_Icon_global_width/2.25-5.5)+-float32(startMenu_Icon_global_count*23),(startMenu_Icon_global_height))
@@ -99,6 +107,8 @@ func StartMenuIconLayout_UI() fyne.CanvasObject{
 
 	 wallpaper := []string{fmt.Sprint("D:/Windows_11_clone/img/store_",switchMode.SwitchMode,".png"),"store"}
 
+	 gallery := []string{"D:/Windows_11_clone/img/gallery.png","gallery"}
+
 	
 
 
@@ -109,6 +119,7 @@ func StartMenuIconLayout_UI() fyne.CanvasObject{
 		NewMenuStateCheck(weather),
 		NewMenuStateCheck(todo),
 		NewMenuStateCheck(wallpaper),
+		NewMenuStateCheck(gallery),
 	)
 	return newContainer
 }

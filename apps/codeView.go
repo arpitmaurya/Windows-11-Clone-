@@ -30,26 +30,15 @@ func CodeViewApp(){
 				return
 			}
 
-			u,err := storage.ParseURI(Entry.Text)
-			if err != nil {
-				dialog.ShowError(err,window)
-			}
-			r,err := storage.Reader(u)
-				if err != nil {
-				dialog.ShowError(err,window)
-			}
+			u,_ := storage.ParseURI(Entry.Text)
+			r,_ := storage.Reader(u)
 			defer r.Close()
-
-			data,err := ioutil.ReadAll(r)
-			if err != nil {
-				dialog.ShowError(err,window)
-			}
+			data,_ := ioutil.ReadAll(r)
 			screenData.SetText(string(data))
 		},
 		window,
 	)
 	}
-
 	header := fyne.NewMainMenu(
 		fyne.NewMenu(
 			"File",

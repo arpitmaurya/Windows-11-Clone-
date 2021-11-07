@@ -20,7 +20,7 @@ func ToDo(){
 
 	var todoContentArr []TodoContent
 	
-	data_from_file,_ := ioutil.ReadFile("odo_JSON_Data.txt")
+	data_from_file,_ := ioutil.ReadFile("Todo_JSON_Data.txt")
 
 	json.Unmarshal(data_from_file,&todoContentArr)
 	window := fyne.CurrentApp().NewWindow("ToDo")
@@ -103,6 +103,7 @@ func ToDo(){
 			content_priority.SetSelected(todoContentArr[id].Priority)
 			content_priority.Refresh()
 		}
+		
 		btn_update := widget.NewButtonWithIcon("Update Current Task",theme.UploadIcon(),func() {
 
 		var TempData []TodoContent
@@ -125,9 +126,6 @@ func ToDo(){
 			result,_ := json.MarshalIndent(todoContentArr,""," ")
 			ioutil.WriteFile("Todo_JSON_Data.txt",result,0644)
 
-		// content_title.Text = ""
-		// content_task.Text = ""
-		// content_priority.ClearSelected()
 		content_title.Refresh()
 		content_task.Refresh()
 		content_priority.Refresh()
@@ -146,4 +144,5 @@ func ToDo(){
 	splitContainer.SetOffset(0.35)
 	window.SetContent(splitContainer)
 	window.Show()
+
 }

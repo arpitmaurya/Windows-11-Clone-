@@ -30,6 +30,7 @@ func (c *MenuStateCheck) Tapped(_ *fyne.PointEvent) {
 if c.clickedOnwhichApp_state == "none"{
 	c.clickedOnwhichApp_state = "true"
 }
+
 	c.Refresh()
 }
 
@@ -68,7 +69,6 @@ func (t *MenuStateRender) Refresh() {
 
 func (t *MenuStateRender) updateImage() {
 	defer t.img.Refresh()
-
 	switch t.check.clickedOnwhichApp_state=="true" {
 	default:
 		
@@ -101,6 +101,11 @@ func (t *MenuStateRender) updateImage() {
 		}
 		if t.check.clickedOnwhichApp == "todo" && t.check.clickedOnwhichApp_state == "true"{
 			apps.ToDo()
+				RunUpDown()
+			StartMenu_Icon_Run_MoveDown()
+		}
+		if t.check.clickedOnwhichApp == "gallery" && t.check.clickedOnwhichApp_state == "true"{
+			apps.Gallery()
 				RunUpDown()
 			StartMenu_Icon_Run_MoveDown()
 		}
